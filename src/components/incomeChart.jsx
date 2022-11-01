@@ -5,34 +5,9 @@ import { chart as ChartJS } from 'chart.js/auto'
 
 export default class IncomeChart extends React.Component {
     render() {
-        const sumSalary = () => {
+        const sum = (category) => {
             let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Salary') sum += item.amount})
-            return sum
-        }
-        const sumGifts = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Gifts') sum += item.amount})
-            return sum
-        }
-        const sumLending = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Lending') sum += item.amount})
-            return sum
-        }
-        const sumRentalIncome = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Rental Income') sum += item.amount})
-            return sum
-        }
-        const sumSale = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Sale') sum += item.amount})
-            return sum
-        }
-        const sumSaving = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Saving') sum += item.amount})
+            this.props.data.forEach(item => {if (item.category === category) sum += item.amount})
             return sum
         }
         const data = {
@@ -46,7 +21,7 @@ export default class IncomeChart extends React.Component {
             ],
             datasets: [{
                 label: 'My first Dataset',
-                data: [sumSalary(), sumGifts(), sumLending(), sumRentalIncome(), sumSale(), sumSaving()],
+                data: [sum('Salary'), sum('Gifts'), sum('Lending'), sum('Rental Income'), sum('Sale'), sum('Saving')],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

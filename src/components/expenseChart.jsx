@@ -11,29 +11,9 @@ export default class ExpenseChart extends React.Component {
             this.props.data.forEach(item => {if (item.category === 'Food & drinks') sum += item.amount})
             return sum
         }
-        const sumShopping = () => {
+        const sum = (category) => {
             let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Shopping') sum += item.amount})
-            return sum
-        }
-        const sumTrans = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Transport') sum += item.amount})
-            return sum
-        }
-        const sumEntertainment = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Entertainment') sum += item.amount})
-            return sum
-        }
-        const sumInvestment = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Investments') sum += item.amount})
-            return sum
-        }
-        const sumCommunication = () => {
-            let sum = 0
-            this.props.data.forEach(item => {if (item.category === 'Communication') sum += item.amount})
+            this.props.data.forEach(item => {if (item.category === category) sum += item.amount})
             return sum
         }
         const data = {
@@ -47,7 +27,7 @@ export default class ExpenseChart extends React.Component {
             ],
             datasets: [{
                 label: 'My first Dataset',
-                data: [sumFnD(), sumShopping(), sumTrans(), sumEntertainment(), sumInvestment(), sumCommunication()],
+                data: [sum('Food & drinks'), sum('Shopping'), sum('Transport'), sum('Entertainment'), sum('Investments'), sum('Communication')],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
