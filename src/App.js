@@ -20,7 +20,8 @@ class App extends Component {
 			whatToShow: "form",
 			data: JSON.parse(localStorage.getItem('data')),
 			balance: JSON.parse(localStorage.getItem('totalIncome')) - JSON.parse(localStorage.getItem('totalExpense')),
-			obj: {id: 1, amount: 0, type: "expense", category: "Shopping", date: new Date()}
+			obj: {id: 1, amount: 0, type: "expense", category: "Shopping", date: new Date()},
+			isShown: false
 		}
 	}
 
@@ -147,6 +148,10 @@ class App extends Component {
 							)
 						}
 					</BigCard>
+				</div>
+				<div className={`resetApp ${this.state.isShown && "selected"}`}>
+					<img className={this.state.isShown && "selected"} src="./img/arrow.png" onClick={() => {this.setState({isShown: !this.state.isShown})}} alt='arrow'/>
+					<button onClick={() => {if (window.confirm("Are you sure you want to reset App ?")) localStorage.clear()}}>Reset App</button>
 				</div>
 			</div>
 		)
